@@ -58,12 +58,12 @@ public class StringProcessing {
                 String recPhone=line[4];
                 String recEmail=line[5];
                 
-                records[currIndex]=String.format("%-20s%-10s%10s%15s%20s%30s",recFirst,recLast,recGender,recAge,recPhone,recEmail);
-                if(validFirst(recFirst))
+                records[currIndex]=String.format("%-20s%-20s%20s%20s%20s%30s",recFirst,recLast,recGender,recAge,recPhone,recEmail);
+                /*if(validFirst(recFirst))
                 {
                     System.out.println(records[currIndex]);
-                }
-                
+                }*/
+                System.out.println(records[currIndex]);
                 currIndex++;
                 
             }
