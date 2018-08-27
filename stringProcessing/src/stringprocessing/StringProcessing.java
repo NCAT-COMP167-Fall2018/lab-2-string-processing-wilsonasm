@@ -15,27 +15,63 @@ import java.util.Scanner;
  */
 public class StringProcessing {
     
-    public static void fileReader(String filename, String[] records)
+    public static boolean valFirst(String recFirst)
     {
-        System.out.print("FIXME");
-    }
-    public static String valFirst(String recFirst)
-    {
-        String upperVal= recFirst.toUpperCase();
-        if upperVal
-    }
-    public static void displayData(String []records)
-    {
-        for (String record : records) {
-            System.out.println(record);
+        String upperVal= recFirst.trim().toUpperCase();
+        for (int i=0;i<upperVal.length();i++)
+        {
+            if(Character.isDigit(upperVal.charAt(i)))
+            {
+                return true;
+            }
+            else 
+            {
+                return false;
+            }
+    
         }
+        return false;
     }
-        
-    public static void lineParse()
+    public static boolean valLast(String recLast)
     {
-        String[] recordList;
-        System.out.print ("FIXME");
+        String upperVal= recLast.trim().toUpperCase();
+        for (int i=0;i<upperVal.length();i++)
+        {
+            if(Character.isDigit(upperVal.charAt(i)))
+            {
+                return true;
+            }
+            else 
+            {
+                return false;
+            }
+    
+        }
+        return false;
     }
+    public static boolean valGender(String recGender)
+    {
+        recGender = recGender.trim();
+        if(recGender.equals("male")||recGender.equals("female"))
+            return false;
+        return true;
+    }
+    
+    public static boolean valAge(String recAge)
+    {
+        int age= Integer.parseInt(recAge);
+        if (age>130)
+        {
+            return true;
+        }
+        else if(age<1)
+        {
+            return true;
+        }
+        return false;
+    }
+    
+        
 
     /**
      * @param args the command line arguments
@@ -59,11 +95,22 @@ public class StringProcessing {
                 String recEmail=line[5];
                 
                 records[currIndex]=String.format("%-20s%-20s%20s%20s%20s%30s",recFirst,recLast,recGender,recAge,recPhone,recEmail);
-                /*if(validFirst(recFirst))
+                if(valLast(recLast))
                 {
                     System.out.println(records[currIndex]);
-                }*/
-                System.out.println(records[currIndex]);
+                }
+                else if(valFirst(recFirst))
+                {
+                    System.out.println(records[currIndex]);
+                }
+                else if(valGender(recGender))
+                {
+                    System.out.println(records[currIndex]);
+                }
+                else{
+                    System.out.println(records[currIndex]);
+                }
+                
                 currIndex++;
                 
             }
