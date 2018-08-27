@@ -24,10 +24,6 @@ public class StringProcessing {
             {
                 return true;
             }
-            else 
-            {
-                return false;
-            }
     
         }
         return false;
@@ -41,17 +37,13 @@ public class StringProcessing {
             {
                 return true;
             }
-            else 
-            {
-                return false;
-            }
     
         }
         return false;
     }
     public static boolean valGender(String recGender)
     {
-        recGender = recGender.trim();
+        recGender = recGender.trim().toLowerCase();
         if(recGender.equals("male")||recGender.equals("female"))
             return false;
         return true;
@@ -68,6 +60,47 @@ public class StringProcessing {
         {
             return true;
         }
+        return false;
+    }
+    public static boolean valPhone(String recPhone)
+    {
+        String valPhone=recPhone.trim();
+        for (int i=1;i<4;i++)
+        {
+            if(!Character.isDigit(valPhone.charAt(i)))
+            {
+                return true;
+            }
+        }
+        for (int i=5;i<8;i++)
+        {
+            if(!Character.isDigit(valPhone.charAt(i)))
+            {
+                return true;
+            }
+        }
+        for (int i=10;i<valPhone.length();i++)
+        {
+            if(!Character.isDigit(recPhone.charAt(i)))
+            {
+                return true;
+            }
+        }
+        return false;
+        
+    }
+    public static boolean valEmail(String recEmail)
+    {
+        String valEmail=recEmail.trim();
+        if(Character.isDigit(valEmail.charAt(0)))
+        {
+            return true;
+        }
+        if(!valEmail.contains("@"))
+        {
+            return true;
+        }
+    
         return false;
     }
     
@@ -95,11 +128,11 @@ public class StringProcessing {
                 String recEmail=line[5];
                 
                 records[currIndex]=String.format("%-20s%-20s%20s%20s%20s%30s",recFirst,recLast,recGender,recAge,recPhone,recEmail);
-                if(valLast(recLast))
+                if(valFirst(recFirst))
                 {
                     System.out.println(records[currIndex]);
                 }
-                else if(valFirst(recFirst))
+                else if(valLast(recLast))
                 {
                     System.out.println(records[currIndex]);
                 }
@@ -107,7 +140,16 @@ public class StringProcessing {
                 {
                     System.out.println(records[currIndex]);
                 }
-                else{
+                else if(valAge(recAge))
+                {
+                    System.out.println(records[currIndex]);
+                }
+                else if(valPhone(recPhone))
+                {
+                    System.out.println(records[currIndex]);
+                }
+                else if (valEmail(recEmail))
+                {
                     System.out.println(records[currIndex]);
                 }
                 
